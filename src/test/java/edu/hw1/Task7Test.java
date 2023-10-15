@@ -1,10 +1,8 @@
 package edu.hw1;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class Task7Test {
     @ParameterizedTest
@@ -16,7 +14,7 @@ public class Task7Test {
         "2, 7, 1",
         "46, 0, 46"
     })
-    public void rotateRigthCorrectWorksWithCorrectData(int n, int shift, int result) {
+    public void rotateRightCorrectWorksWithCorrectData(int n, int shift, int result) {
         Assertions.assertEquals(result, Task7.rotateRight(n, shift));
     }
 
