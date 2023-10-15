@@ -1,6 +1,7 @@
 package edu.hw1;
 
-public class Task7 {
+@SuppressWarnings("MagicNumber")
+class Task7 {
     private static int rotateRigthInner(int n, int shift) {
         int digitsCount = (int) (Math.log(n) / Math.log(2)) + 1;
         shift = shift % digitsCount;

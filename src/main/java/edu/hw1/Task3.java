@@ -3,7 +3,7 @@ package edu.hw1;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class Task3 {
+class Task3 {
     public static boolean isNestable(Integer[] firstArray, Integer[] secondArray) {
         if (firstArray.length < 1 || secondArray.length < 1) {
             return false;

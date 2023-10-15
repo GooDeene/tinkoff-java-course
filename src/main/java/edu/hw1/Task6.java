@@ -2,8 +2,8 @@ package edu.hw1;
 
 import java.util.Arrays;
 import java.util.Collections;
-
-public class Task6 {
+@SuppressWarnings("MagicNumber")
+class Task6 {
     public static Integer convertDigitsArrayToInteger(Integer[] inputArray) {
         int result = 0;
         for (var i = 0; i < inputArray.length; i++) {

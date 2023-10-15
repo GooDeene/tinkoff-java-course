@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class Task5 {
+@SuppressWarnings("MagicNumber")
+class Task5 {
     private static boolean isIntegerPalindrome(Integer[] inputDigitsArray) {
         var copyToReverse = inputDigitsArray.clone();
         Collections.reverse(Arrays.asList(copyToReverse));

@@ -1,6 +1,7 @@
 package edu.hw1;
 
-public class Task2 {
+class Task2 {
+    @SuppressWarnings("MagicNumber")
     public static int countDigits(Integer inputInteger) {
         if (inputInteger == 0) {
             return 1;
