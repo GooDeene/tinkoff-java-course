@@ -1,49 +1,59 @@
 package edu.hw1;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.Objects;
 
-@SuppressWarnings("MagicNumber")
 class Task5 {
-    private static boolean isIntegerPalindrome(Integer[] inputDigitsArray) {
-        var copyToReverse = inputDigitsArray.clone();
-        Collections.reverse(Arrays.asList(copyToReverse));
-        return Arrays.equals(copyToReverse, inputDigitsArray);
+    private Task5() {
     }
 
-    public static Integer[] convertIntegerToDigitsArray(Integer input) {
+    private static final int TEN = 10;
+
+    private static boolean isIntegerPalindrome(ArrayList<Integer> inputDigitsArray) {
+        int len = inputDigitsArray.size();
+        int midInd = inputDigitsArray.size() / 2;
+        var firstPart = inputDigitsArray.subList(0, midInd);
+        var secondPart = inputDigitsArray.subList(len % 2 == 0 ? midInd : midInd + 1, len);
+
+        for (int i = 0; i < midInd; i++) {
+            if (!Objects.equals(firstPart.get(i), secondPart.get(midInd - 1 - i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static ArrayList<Integer> convertIntegerToDigitsArrayList(Integer input) {
         var inputAsString = input.toString();
-        var result = new Integer[inputAsString.length()];
+        var result = new ArrayList<Integer>();
         for (int i = 0; i < inputAsString.length(); i++) {
-            result[i] = inputAsString.charAt(i) - '0';
+            result.add(inputAsString.charAt(i) - '0');
         }
         return result;
     }
 
     public static boolean isPalindromeDescendant(Integer input) {
-        Integer[] mainArray = convertIntegerToDigitsArray(input);
-        while (mainArray.length > 1) {
+        ArrayList<Integer> mainArray = convertIntegerToDigitsArrayList(input);
+        while (mainArray.size() > 1) {
             if (isIntegerPalindrome(mainArray)) {
                 return true;
             }
             ArrayList<Integer> newInt = new ArrayList<>();
 
-            for (var i = 1; i < mainArray.length; i += 2) {
-                var sumInt = mainArray[i - 1] + mainArray[i];
-                if (sumInt >= 10) {
-                    newInt.add(sumInt / 10);
-                    newInt.add(sumInt - 10 * (sumInt / 10));
+            for (var i = 1; i < mainArray.size(); i += 2) {
+                var sumInt = mainArray.get(i - 1) + mainArray.get(i);
+                if (sumInt >= TEN) {
+                    newInt.add(sumInt / TEN);
+                    newInt.add(sumInt % TEN);
                 } else {
                     newInt.add(sumInt);
                 }
             }
-            if (mainArray.length % 2 != 0) {
-                newInt.add(mainArray[mainArray.length - 1]);
+            if (mainArray.size() % 2 != 0) {
+                newInt.add(mainArray.get(mainArray.size() - 1));
             }
 
-            mainArray = new Integer[newInt.size()];
-            newInt.toArray(mainArray);
+            mainArray = newInt;
         }
         return false;
     }

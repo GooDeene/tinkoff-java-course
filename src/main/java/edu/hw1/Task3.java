@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.Collections;
 
 class Task3 {
+    private Task3() {
+    }
+
     public static boolean isNestable(Integer[] firstArray, Integer[] secondArray) {
         if (firstArray.length < 1 || secondArray.length < 1) {
             return false;
