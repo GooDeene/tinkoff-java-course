@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 class Task6 {
-    private Task6() {}
+    private Task6() {
+    }
 
     private static final int TEN = 10;
     private static final int MIN_5_DIGITS_INT = 10000;
@@ -15,8 +16,10 @@ class Task6 {
 
     public static Integer convertDigitsArrayToInteger(ArrayList<Integer> inputArray) {
         int result = 0;
-        for (var i = 0; i < inputArray.size(); i++) {
-            result += inputArray.get(i) * ((int) Math.pow(TEN, inputArray.size() - i - 1));
+        int order = 1;
+        for (var i = inputArray.size() - 1; i >= 0; i--) {
+            result += inputArray.get(i) * order;
+            order *= TEN;
         }
         return result;
     }
