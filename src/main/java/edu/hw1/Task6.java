@@ -8,8 +8,8 @@ class Task6 {
     }
 
     private static final int TEN = 10;
-    private static final int MIN_5_DIGITS_INT = 10000;
-    private static final int MIN_4_DIGITS_INT = 1000;
+    private static final int UPPER_BORDER = 9999;
+    private static final int LOWER_BORDER = 1000;
     private static final int CAPRAKER_REFERENCE = 6174;
     private static final int MAX_COUNT_DIGITS = 4;
     private static final int SAME_DIGITS_DIVIDER = 1111;
@@ -25,7 +25,7 @@ class Task6 {
     }
 
     private static boolean isCaprakerConditionsMet(Integer input) {
-        if (input >= MIN_5_DIGITS_INT || input <= MIN_4_DIGITS_INT) {
+        if (input > UPPER_BORDER || input < LOWER_BORDER) {
             return false;
         }
         return input % SAME_DIGITS_DIVIDER != 0;

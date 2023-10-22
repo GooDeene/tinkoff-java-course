@@ -1,7 +1,6 @@
 package edu.hw1;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 class Task5 {
     private Task5() {
@@ -12,11 +11,9 @@ class Task5 {
     private static boolean isIntegerPalindrome(ArrayList<Integer> inputDigitsArray) {
         int len = inputDigitsArray.size();
         int midInd = inputDigitsArray.size() / 2;
-        var firstPart = inputDigitsArray.subList(0, midInd);
-        var secondPart = inputDigitsArray.subList(len % 2 == 0 ? midInd : midInd + 1, len);
 
         for (int i = 0; i < midInd; i++) {
-            if (!Objects.equals(firstPart.get(i), secondPart.get(midInd - 1 - i))) {
+            if (!inputDigitsArray.get(i).equals(inputDigitsArray.get(len - i - 1))) {
                 return false;
             }
         }
