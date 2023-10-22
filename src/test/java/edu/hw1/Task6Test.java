@@ -14,14 +14,15 @@ public class Task6Test {
         "1234, 3",
         "6656, 5",
         "6174, 0",
-        "6147, 1"
+        "6147, 1",
+        "1000, 5"
     })
     public void correctWorksWithCorrectData(int input, int correctResult) {
         Assertions.assertEquals(correctResult, Task6.countK(input));
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 1000, 1111, 12345, 999, 6666})
+    @ValueSource(ints = {1, 1111, 12345, 999, 6666})
     public void correctWorksWithIncorrectData(int input) {
         Assertions.assertEquals(Integer.MAX_VALUE, Task6.countK(input));
     }
