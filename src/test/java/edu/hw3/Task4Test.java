@@ -28,6 +28,6 @@ public class Task4Test {
     @ValueSource(ints = {-10, 0, 4000, 1234567})
     public void throwsExceptionWithIncorrectArabicIntegers(Integer arabic) {
         assertThatThrownBy(() -> Task4.convertToRoman(arabic))
-            .isInstanceOf(NumberFormatException.class);
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }

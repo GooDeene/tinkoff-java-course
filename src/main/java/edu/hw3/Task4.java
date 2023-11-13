@@ -1,6 +1,7 @@
 package edu.hw3;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Task4 {
     private Task4() {
@@ -10,7 +11,7 @@ public class Task4 {
     // Без этого декоратора чекстайл ругается на 1000, 900, ..., 1.
     // Не вижу смысла отдельно выносить их в константы, если они и так задают константный LinkedHashMap
 
-    private static final LinkedHashMap<Integer, String> ARABIC_TO_ROMAN_RANKS = new LinkedHashMap<>() {{
+    private static final Map<Integer, String> ARABIC_TO_ROMAN_RANKS = new LinkedHashMap<>() {{
         put(1000, "M");
         put(900, "CM");
         put(500, "D");
@@ -30,7 +31,7 @@ public class Task4 {
 
     public static String convertToRoman(int input) {
         if (input < MIN_ROMAN_INT || input > MAX_ROMAN_INT) {
-            throw new NumberFormatException("Число не может быть записано римскими цифрами!");
+            throw new IllegalArgumentException("Число не может быть записано римскими цифрами!");
         }
         int arabicInt = input;
         StringBuilder result = new StringBuilder();

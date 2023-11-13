@@ -38,15 +38,15 @@ public class Task6Test {
     }
 
     @Test
-    public void stockToSctingWorksCorrectly() {
+    public void stockToStringWorksCorrectly() {
         Stock stock = new Stock("test", 10);
-        Assertions.assertEquals("Name: test, id: 0, price: 10", stock.toString());
+        Assertions.assertEquals("Name: test, price: 10 cents", stock.toString());
     }
 
     @Test
     public void stockGetMethodsWorksCorrectly() {
         Stock stock = new Stock("stockName", 19);
-        Assertions.assertEquals("stockName", stock.getName());
-        Assertions.assertEquals(19, stock.getPrice());
+        Assertions.assertEquals("stockName", stock.name());
+        Assertions.assertEquals(19, stock.priceInCents());
     }
 }

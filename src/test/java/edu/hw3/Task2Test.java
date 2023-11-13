@@ -1,6 +1,5 @@
 package edu.hw3;
 
-import java.util.MissingFormatArgumentException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -34,6 +33,6 @@ public class Task2Test {
     @ValueSource(strings = {")(", "((())))", "()(())())"})
     public void throwExceptionWithIncorrectStrings(String input) {
         assertThatThrownBy(() -> Task2.clusterize(input))
-            .isInstanceOf(MissingFormatArgumentException.class);
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }

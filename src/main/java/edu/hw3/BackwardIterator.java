@@ -1,14 +1,14 @@
 package edu.hw3;
 
-import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 public class BackwardIterator<T> implements Iterator<T> {
-    private final T[] internalCollection;
+    private final List<T> internalCollection;
     private int cursor;
 
-    public BackwardIterator(Collection<T> collection) {
-        this.internalCollection = (T[]) collection.toArray();
+    public BackwardIterator(List<T> collection) {
+        this.internalCollection = collection;
         this.cursor = collection.size();
     }
 
@@ -23,6 +23,6 @@ public class BackwardIterator<T> implements Iterator<T> {
         if (cursor < 0) {
             throw new NullPointerException();
         }
-        return internalCollection[cursor];
+        return internalCollection.get(cursor);
     }
 }

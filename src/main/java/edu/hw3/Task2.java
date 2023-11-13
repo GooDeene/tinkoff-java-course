@@ -1,20 +1,20 @@
 package edu.hw3;
 
 import java.util.ArrayList;
-import java.util.MissingFormatArgumentException;
+import java.util.List;
 import java.util.Stack;
 
 public class Task2 {
     private Task2() {
     }
 
-    public static ArrayList<String> clusterize(String inputBrackets) {
+    public static List<String> clusterize(String inputBrackets) {
         if (inputBrackets == null || inputBrackets.isEmpty()) {
             return new ArrayList<>();
         }
 
         char[] inputAsArray = inputBrackets.toCharArray();
-        ArrayList<String> result = new ArrayList<>();
+        List<String> result = new ArrayList<>();
         Stack<Character> bracketsStack = new Stack<>();
         int clusterIndex = -1;
         for (int i = 0; i < inputBrackets.length(); i++) {
@@ -24,7 +24,7 @@ public class Task2 {
             } else {
                 // Если строку нельзя разбить на сбалансированные кластеры будет вызвана ошибка
                 if (bracketsStack.isEmpty()) {
-                    throw new MissingFormatArgumentException(
+                    throw new IllegalArgumentException(
                         "Некорректная строка. Невозможно разбить на сбалансированные кластеры!");
                 }
                 bracketsStack.pop();

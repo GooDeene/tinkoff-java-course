@@ -1,15 +1,10 @@
 package edu.hw3;
 
-import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class StockMaketplace implements StockMarket {
-    private final PriorityQueue<Stock> stocksQueue = new PriorityQueue<>(new Comparator<Stock>() {
-        @Override
-        public int compare(Stock o1, Stock o2) {
-            return Integer.compare(o2.getPrice(), o1.getPrice());
-        }
-    });
+    private final PriorityQueue<Stock> stocksQueue =
+        new PriorityQueue<>((o1, o2) -> Integer.compare(o2.priceInCents(), o1.priceInCents()));
 
     @Override public void add(Stock stock) {
         stocksQueue.offer(stock);

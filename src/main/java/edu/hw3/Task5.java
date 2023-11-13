@@ -12,21 +12,22 @@ public class Task5 {
 
     public static Contact[] parseContacts(String[] contacts, String sortingOrder) {
         if (contacts == null
-            || contacts.length == 0
             || !Objects.equals(sortingOrder, ASCENDING_ORDER_KEYWORD)
             && !Objects.equals(sortingOrder, DESCENDING_ORDER_KEYWORD)) {
+            throw new IllegalArgumentException(
+                "Список контактов не может быть Null и/или ошибка в порядке сортировки!"
+            );
+        } else if (contacts.length == 0) {
             return new Contact[0];
         }
-        String[] contactsInternal = contacts.clone();
+
         Contact[] result = new Contact[contacts.length];
         boolean isDescendingOrder = sortingOrder.equals(DESCENDING_ORDER_KEYWORD);
 
-        Arrays.sort(contactsInternal, new SecondWordComparator());
-
-        for (int i = 0; i < contactsInternal.length; i++) {
-            int index = isDescendingOrder ? contactsInternal.length - 1 - i : i;
-            result[i] = new Contact(contactsInternal[index]);
+        for (int i = 0; i < contacts.length; i++) {
+            result[i] = Contact.withFullName(contacts[i]);
         }
+        Arrays.sort(result, isDescendingOrder ? new ContactsComparator().reversed() : new ContactsComparator());
 
         return result;
     }

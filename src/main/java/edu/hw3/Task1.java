@@ -9,8 +9,8 @@ public class Task1 {
             return null;
         }
         StringBuilder result = new StringBuilder();
-        for (char letter : input.toCharArray()) {
-            if (Character.isLetter(letter)) {
+        for (Character letter : input.toCharArray()) {
+            if (letter.toString().matches("[a-zA-Z]")) {
                 if (Character.isLowerCase(letter)) {
                     result.append((char) ('z' - letter + 'a'));
                 } else {

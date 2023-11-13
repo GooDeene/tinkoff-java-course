@@ -12,7 +12,9 @@ public class Task1Test {
         "abc, zyx",
         "hello, svool",
         "A, Z",
-        "HeLLo, SvOOl"
+        "HeLLo, SvOOl",
+        "Я РУССКИЙ, Я РУССКИЙ",
+        "Я ИДУ to THE end, Я ИДУ gl GSV vmw"
     })
     public void correctWorksWithSimpleStringsWithoutSymbols(String str, String answer) {
         Assertions.assertEquals(answer, Task1.atbash(str));
