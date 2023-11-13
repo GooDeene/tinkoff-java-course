@@ -10,7 +10,7 @@ public class Task8Test {
     @Test
     public void correctWorksWithIntegersList() {
         var iterator = new BackwardIterator<>(List.of(1, 2, 3, 2));
-        ArrayList<Integer> iterationResult = new ArrayList<>();
+        List<Integer> iterationResult = new ArrayList<>();
         while (iterator.hasNext()) {
             iterationResult.add(iterator.next());
         }
@@ -19,14 +19,12 @@ public class Task8Test {
         for (int i = 0; i < rightAnswers.length; i++) {
             Assertions.assertEquals(rightAnswers[i], iterationResult.get(i));
         }
-
-        var iterator2 = new BackwardIterator<>(List.of("a", "b", "c"));
     }
 
     @Test
     public void correctWorksWithStrings() {
         var iterator = new BackwardIterator<>(List.of("a", "b", "c"));
-        ArrayList<String> iterationResult = new ArrayList<>();
+        List<String> iterationResult = new ArrayList<>();
         while (iterator.hasNext()) {
             iterationResult.add(iterator.next());
         }
