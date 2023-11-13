@@ -41,10 +41,5 @@ public class Task7Test {
     public void thirdCondWorksCorrectlyWithInCorrectData(String str) {
         Assertions.assertFalse(Task7.isThirdConditionValid(str));
     }
-
-    @Test
-    public void test() {
-        Assertions.assertFalse(Task8.isCondition1Valid(null));
-    }
 }
 
