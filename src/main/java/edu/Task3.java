@@ -11,6 +11,9 @@ public class Task3 {
     }
 
     static public Optional<LocalDate> parseDate(String string) {
+        if (string == null) {
+            return Optional.empty();
+        }
         Map<Pattern, Validator> patterns = Map.of(
             Pattern.compile("[0-9]{4}-(0?[1-9]|1[0-2])-([12]\\d|30|31|0?[1-9])"),
             new Matcher1(),

@@ -3,9 +3,13 @@ package edu;
 import java.util.regex.Pattern;
 
 public class Task6 {
-    private Task6() {}
+    private Task6() {
+    }
 
     public static boolean isStringSubsequenceOfLine(String subsequence, String fullString) {
+        if (subsequence == null || fullString == null) {
+            return false;
+        }
         var patternBuilder = new StringBuilder();
         for (var e : subsequence.toCharArray()) {
             patternBuilder.append(".*");

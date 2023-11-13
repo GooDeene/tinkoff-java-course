@@ -1,15 +1,13 @@
 package edu;
 
-import net.bytebuddy.implementation.auxiliary.MethodCallProxy;
+import java.time.LocalDate;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import java.time.LocalDate;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class Task3Test {
-    @Test
-    public void correctWorksWithCorrectExaplesData() {
+    @Test public void correctWorksWithCorrectExaplesData() {
         Assertions.assertEquals(LocalDate.of(2020, 10, 10), Task3.parseDate("2020-10-10").get());
         Assertions.assertEquals(LocalDate.of(2020, 12, 2), Task3.parseDate("2020-12-2").get());
         Assertions.assertEquals(LocalDate.of(1976, 3, 1), Task3.parseDate("1/3/1976").get());
@@ -21,14 +19,14 @@ public class Task3Test {
         Assertions.assertEquals(LocalDate.now().minusDays(2234), Task3.parseDate("2234 days ago").get());
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"2020-19-89", "2020-19-8", "1/19/1978", "toomorrow", "friday", "w day ago", "3 days later"})
+    public void correctWorksWithIncorrectData(String date) {
+        Assertions.assertFalse(Task3.parseDate(date).isPresent());
+    }
+
     @Test
-    public void correctWorksWithIncorrectData() {
-        Assertions.assertFalse(Task3.parseDate("2020-19-89").isPresent());
-        Assertions.assertFalse(Task3.parseDate("2020-19-8").isPresent());
-        Assertions.assertFalse(Task3.parseDate("1/19/1978").isPresent());
-        Assertions.assertFalse(Task3.parseDate("toomorrow").isPresent());
-        Assertions.assertFalse(Task3.parseDate("friday").isPresent());
-        Assertions.assertFalse(Task3.parseDate("w day ago").isPresent());
-        Assertions.assertFalse(Task3.parseDate("3 days later").isPresent());
+    public void correctWorksWithNull() {
+        Assertions.assertFalse(Task3.parseDate(null).isPresent());
     }
 }
