@@ -9,24 +9,26 @@ public class PrettyConsoleRenderer implements Renderer {
 
     @Override
     public String render(Maze maze) {
-        return renderField(maze, null, false);
+        return renderField(maze, null);
     }
 
     @Override
     public String render(Maze maze, List<Coordinate> path) {
-        return renderField(maze, path, true);
+        return renderField(maze, path);
     }
 
-    private String renderField(Maze maze, List<Coordinate> path, boolean usePath) {
-        if (maze == null || usePath && path == null) {
+    private String renderField(Maze maze, List<Coordinate> path) {
+        if (maze == null) {
             return null;
         }
+
+        var usePath = path != null;
         var result = new StringBuilder();
         result.append(WALL_SYMBOL.repeat(maze.getWidth() + 2)).append('\n');
         for (var row = 0; row < maze.getHeight(); row++) {
             result.append(WALL_SYMBOL);
             for (var col = 0; col < maze.getWidth(); col++) {
-                if (maze.getCell(new Coordinate(row, col)).getType() == Cell.Type.WALL) {
+                if (maze.getCell(new Coordinate(row, col)).type() == Cell.Type.WALL) {
                     result.append(WALL_SYMBOL);
                 } else if (usePath && path.contains(new Coordinate(row, col))) {
                     result.append(PATH_SYMBOL);

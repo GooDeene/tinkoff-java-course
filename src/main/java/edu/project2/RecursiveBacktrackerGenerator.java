@@ -13,12 +13,12 @@ public class RecursiveBacktrackerGenerator implements Generator {
     };
 
     @Override
-    public Maze generate(int height, int width) {
-        return generate(height, width, new Random().nextLong());
+    public Maze generateMaze(int height, int width) {
+        return generateMaze(height, width, new Random().nextLong());
     }
 
     @Override
-    public Maze generate(int height, int width, long generatorSeed) {
+    public Maze generateMaze(int height, int width, long generatorSeed) {
         var maze = new Maze(height, width);
         var randomizer = new Random(generatorSeed);
         var visitedCells = new Stack<Coordinate>();
@@ -36,7 +36,7 @@ public class RecursiveBacktrackerGenerator implements Generator {
                 );
                 if (maze.isCoordinateInsideMazeField(neighbourCord)) {
                     var cell = maze.getCell(neighbourCord);
-                    if (cell.getType() == Cell.Type.WALL) {
+                    if (cell.type() == Cell.Type.WALL) {
                         possibleSteps.add(neighbourCord);
                     }
                 }

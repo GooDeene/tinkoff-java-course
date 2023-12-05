@@ -15,7 +15,7 @@ public class PrettyRendererTest {
         Assertions.assertNull(render);
 
         var render2 = new PrettyConsoleRenderer().render(new Maze(3, 3), null);
-        Assertions.assertNull(render2);
+        Assertions.assertNotNull(render2);
     }
 
     private String getCorrectMaze3x3Seed228RenderWithoutPath() {
@@ -38,7 +38,7 @@ public class PrettyRendererTest {
 
     @Test
     public void rendererCorrectWorksWithCorrectMazeWithoutPath() {
-        var maze = new RecursiveBacktrackerGenerator().generate(3, 3, 228);
+        var maze = new RecursiveBacktrackerGenerator().generateMaze(3, 3, 228);
         var mazeRender = new PrettyConsoleRenderer().render(maze).toCharArray();
         var correctRender = getCorrectMaze3x3Seed228RenderWithoutPath().toCharArray();
 
@@ -55,7 +55,7 @@ public class PrettyRendererTest {
         correctPath.add(new Coordinate(1, 2));
         correctPath.add(new Coordinate(2, 2));
 
-        var maze = new RecursiveBacktrackerGenerator().generate(3, 3, 228);
+        var maze = new RecursiveBacktrackerGenerator().generateMaze(3, 3, 228);
         var mazeWithPathRender = new PrettyConsoleRenderer().render(maze, correctPath).toCharArray();
         var correctPathRender = getCorrectMaze3x3Seed228RenderWithPath().toCharArray();
 

@@ -15,7 +15,7 @@ public class DFSSolver implements Solver {
 
     private void validateCoordinates(Maze maze, Coordinate end, boolean endCoord) {
         if (!maze.isCoordinateInsideMazeField(end)
-            || maze.getCell(end).getType() == Cell.Type.WALL) {
+            || maze.getCell(end).type() == Cell.Type.WALL) {
             throw new IllegalArgumentException("%s точка лабиринта должна быть в его пределах и не должна быть стеной!"
                 .formatted(endCoord ? "Конечная" : "Начальная"));
         }
@@ -32,6 +32,8 @@ public class DFSSolver implements Solver {
 
         var path = new ArrayList<Coordinate>();
         var toVisit = new Stack<Coordinate>();
+        var visitedCells = new boolean[maze.getHeight()][maze.getWidth()];
+
         toVisit.push(start);
 
         while (!toVisit.isEmpty()) {
@@ -41,18 +43,19 @@ public class DFSSolver implements Solver {
                 break;
             }
             var neighbours = new ArrayList<Coordinate>();
-            if (!maze.getCell(currentCoord).visited()) {
+            if (!visitedCells[currentCoord.row()][currentCoord.col()]) { //!maze.getCell(currentCoord).visited()) {
                 for (var lambdas : LAMBDAS_TO_STEP) {
                     var newCoord = new Coordinate(currentCoord.row() + lambdas[0], currentCoord.col() + lambdas[1]);
                     if (maze.isCoordinateInsideMazeField(newCoord)
-                        && maze.getCell(newCoord).getType() != Cell.Type.WALL
-                        && !maze.getCell(newCoord).visited()) {
+                        && maze.getCell(newCoord).type() != Cell.Type.WALL
+                        && !visitedCells[newCoord.row()][newCoord.col()]) {
                         neighbours.add(newCoord);
                     }
                 }
             }
 
-            maze.getCell(currentCoord).makeVisited();
+
+            visitedCells[currentCoord.row()][currentCoord.col()] = true;
             if (!neighbours.isEmpty()) {
                 for (var n : neighbours) {
                     toVisit.push(n);

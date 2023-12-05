@@ -8,13 +8,9 @@ public class CellTest {
     public void cellMethodsCorrectWorks() {
         var cell = new Cell(-10, 9, Cell.Type.WALL);
 
-        Assertions.assertEquals(-10, cell.getRow());
-        Assertions.assertEquals(9, cell.getCol());
-        Assertions.assertEquals(Cell.Type.WALL, cell.getType());
-        Assertions.assertFalse(cell.visited());
-
-        cell.makeVisited();
-        Assertions.assertTrue(cell.visited());
+        Assertions.assertEquals(-10, cell.row());
+        Assertions.assertEquals(9, cell.col());
+        Assertions.assertEquals(Cell.Type.WALL, cell.type());
     }
 
     @Test

@@ -8,7 +8,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class DFSSolverTest {
     @Test
     public void solverFindSolutionIntoCorrectMaze() {
-        var maze = new RecursiveBacktrackerGenerator().generate(3, 3, 228);
+        var maze = new RecursiveBacktrackerGenerator().generateMaze(3, 3, 228);
         var correctPath = new ArrayList<Coordinate>();
         correctPath.add(new Coordinate(0, 0));
         correctPath.add(new Coordinate(0, 1));
@@ -28,7 +28,7 @@ public class DFSSolverTest {
 
     @Test
     public void solverFindSolutionIntoMazeWithForks() {
-        var maze = new RecursiveBacktrackerGenerator().generate(5, 5, 228);
+        var maze = new RecursiveBacktrackerGenerator().generateMaze(5, 5, 228);
         var correctPath = new ArrayList<Coordinate>();
         var correctPathCoords = new int[][] {
             {0, 0}, {0, 1}, {0, 2},
@@ -51,7 +51,7 @@ public class DFSSolverTest {
 
     @Test
     public void solverWorksCorrectWithIncorrectCoordinates() {
-        var maze = new RecursiveBacktrackerGenerator().generate(4, 4);
+        var maze = new RecursiveBacktrackerGenerator().generateMaze(4, 4);
         assertThatThrownBy(() -> new DFSSolver().solve(
             maze,
             new Coordinate(0, 0),

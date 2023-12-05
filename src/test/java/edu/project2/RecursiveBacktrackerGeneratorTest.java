@@ -21,7 +21,7 @@ public class RecursiveBacktrackerGeneratorTest {
     @Test
     public void generatorWithSeepWorksCorrectlyWithCorrectMazeSizes() {
         var generator = new RecursiveBacktrackerGenerator();
-        var maze = generator.generate(3, 3, 228);
+        var maze = generator.generateMaze(3, 3, 228);
         var manuallyMaze = generateMazeSeed228Manually();
 
         Assertions.assertEquals(maze, manuallyMaze);
@@ -29,7 +29,7 @@ public class RecursiveBacktrackerGeneratorTest {
 
     @Test
     public void generateWithoutSeedWorksCorrectly() {
-        var maze = new RecursiveBacktrackerGenerator().generate(4, 3);
+        var maze = new RecursiveBacktrackerGenerator().generateMaze(4, 3);
 
         Assertions.assertEquals(4, maze.getHeight());
         Assertions.assertEquals(3, maze.getWidth());
@@ -41,7 +41,7 @@ public class RecursiveBacktrackerGeneratorTest {
 
     @Test
     public void generateWorksCorrectlyWithIncorrectMazeSizes() {
-        assertThatThrownBy(() -> new RecursiveBacktrackerGenerator().generate(-1, 10))
+        assertThatThrownBy(() -> new RecursiveBacktrackerGenerator().generateMaze(-1, 10))
             .isInstanceOf(IllegalArgumentException.class)
             .hasMessage("Рамзер лабиринта должен быть больше 2 x 2, но меньше 700 x 700");
     }
