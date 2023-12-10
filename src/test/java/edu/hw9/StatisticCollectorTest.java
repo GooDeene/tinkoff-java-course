@@ -2,6 +2,7 @@ package edu.hw9;
 
 import edu.hw9.task1.Metric;
 import java.util.concurrent.Executors;
+import edu.hw9.task1.StatisticCollector;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,7 @@ public class StatisticCollectorTest {
 
     @Test
     public void statsCollectorWorksCorrectlyWithCorrectData() {
-        var collector = new edu.hw9.task1.StatisticCollector(2);
+        var collector = new StatisticCollector(2);
         var executorService = Executors.newFixedThreadPool(2);
 
         executorService.execute(() -> collector.push("metric1", new double[] { 1 }));
@@ -28,7 +29,7 @@ public class StatisticCollectorTest {
 
     @Test
     public void statsCollectorWorksCorrectlyWithEmptyData() {
-        var collector = new edu.hw9.task1.StatisticCollector(2);
+        var collector = new StatisticCollector(2);
         var executorService = Executors.newFixedThreadPool(3);
 
         executorService.execute(() -> collector.push("metric1", new double[0]));
