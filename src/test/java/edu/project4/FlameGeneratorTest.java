@@ -3,6 +3,8 @@ package edu.project4;
 import edu.project4.renderers.ParallelRenderer;
 import edu.project4.structures.ImageType;
 import edu.project4.structures.Rect;
+import edu.project4.transformations.HeartTransformation;
+import edu.project4.transformations.PolarTransformation;
 import edu.project4.transformations.PowerTransformation;
 import edu.project4.transformations.SinusTransformation;
 import edu.project4.transformations.SphereTransformation;
@@ -28,7 +30,9 @@ public class FlameGeneratorTest {
                 new SinusTransformation(),
                 new SphereTransformation(),
                 new SwirlTransformation(),
-                new TangTransformation()
+                new TangTransformation(),
+                new HeartTransformation(),
+                new PolarTransformation()
             ),
             new ImageCorrector()
         );
