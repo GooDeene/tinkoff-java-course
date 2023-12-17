@@ -174,7 +174,7 @@
                     <version>${jacoco-maven-plugin.version}</version>
                     <configuration>
                         <excludes>
-                            <exclude>edu/hw11/Task2Test/**</exclude>
+                            <exclude>edu/hw11/**</exclude>
                         </excludes>
                     </configuration>
                     <executions>
